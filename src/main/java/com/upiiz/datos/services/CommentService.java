@@ -36,7 +36,9 @@ public class CommentService implements CommentRepository {
 
     @Override
     public void save(CommentModel comment) {
-
+        jdbcTemplate.update(
+                "INSERT INTO comments(text,id_product) VALUES (?,?)",
+                comment.getText(),comment.getIdProduct());
     }
 
     @Override
